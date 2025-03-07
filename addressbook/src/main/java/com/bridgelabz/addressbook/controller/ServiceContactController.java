@@ -4,6 +4,7 @@ package com.bridgelabz.addressbook.controller;
 import com.bridgelabz.addressbook.DTO.ContactDTO;
 import com.bridgelabz.addressbook.Service.ContactService;
 import com.bridgelabz.addressbook.model.Contact;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,14 +39,14 @@ public class ServiceContactController {
 
     // POST - Add New Contact
     @PostMapping("/contacts/add")
-    public ResponseEntity<String> addContact(@RequestBody ContactDTO contactDTO) {
+    public ResponseEntity<String> addContact( @Valid @RequestBody ContactDTO contactDTO) {
         log.info("Received request to add a new contact: {}", contactDTO);
         return ResponseEntity.ok(contactService.addContact(contactDTO));
     }
 
     // PUT - Update Contact
     @PutMapping("/contacts/update/{id}")
-    public ResponseEntity<String> updateContact(@PathVariable Long id, @RequestBody ContactDTO contactDTO) {
+    public ResponseEntity<String> updateContact(@PathVariable Long id, @Valid @RequestBody ContactDTO contactDTO) {
         log.info("Received request to update contact with ID: {}", id);
         return ResponseEntity.ok(contactService.updateContact(id, contactDTO));
     }
