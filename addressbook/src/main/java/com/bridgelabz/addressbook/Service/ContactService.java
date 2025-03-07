@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbook.Service;
 
 import com.bridgelabz.addressbook.DTO.ContactDTO;
+import com.bridgelabz.addressbook.Exception.AddressBookException;
 import com.bridgelabz.addressbook.model.Contact;
 import com.bridgelabz.addressbook.repository.ContactRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class ContactService {
     // Get Contact by ID
     public Contact getContactById(Long id) {
         log.info("Fetching contact with ID from database: {}", id);
-        return contactRepository.findById(id).orElse(null);
+        return contactRepository.findById(id).orElseThrow(() -> new AddressBookException("Address Book ID " + id + " not found"));
     }
 
     // Add New Contact
