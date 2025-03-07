@@ -2,6 +2,7 @@ package com.bridgelabz.addressbook.model;
 
 
 import com.bridgelabz.addressbook.DTO.ContactDTO;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Entity
 public class Contact {
     private Long id;
     private String name;
